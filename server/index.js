@@ -9,7 +9,7 @@ const filePath = path.join(__dirname, '..', 'public');
 mainApp.use(express.static(filePath));
 
 mainApp.get('/mortgage-calculator.js', (req, res) => {
-  axios.get('http://localhost:4003/dist/bundle.js')
+  axios.get('https://bluefin-bundles.s3-us-west-1.amazonaws.com/Mortgage-Calculator/bundle.js')
     .then((bundle) => {
       res.status(200);
       res.send(bundle.data);
@@ -36,7 +36,7 @@ mainApp.get('/calculator:listingId', (req, res) => {
 });
 
 mainApp.get('/tour-scheduler.js', (req, res) => {
-  axios.get('http://localhost:3002/bundle.js')
+  axios.get('https://bluefin-bundles.s3-us-west-1.amazonaws.com/Tour-Scheduler/bundle.js')
     .then((bundle) => {
       res.status(200);
       res.send(bundle.data);
@@ -77,7 +77,7 @@ mainApp.get('/schedule', (req, res) => {
 });
 
 mainApp.get('/listings-carousel.js', (req, res) => {
-  axios.get('http://localhost:4004/dist/bundle.js')
+  axios.get('https://bluefin-bundles.s3-us-west-1.amazonaws.com/Listings-Carousel/bundle.js')
     .then((bundle) => {
       res.status(200);
       res.send(bundle.data);

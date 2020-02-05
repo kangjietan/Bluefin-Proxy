@@ -1,0 +1,27 @@
+#mortgage {
+  grid-area: mortgage;
+}
+
+#listings {
+  grid-area: listings;
+}
+
+#app {
+  grid-area: schedule;
+  position: sticky;
+}
+
+#title {
+  grid-area: title;
+}
+
+#container {
+  display: grid;
+  grid-template-columns: 25px 750px 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    ". title title"
+    ". mortgage schedule"
+    ". listings . "
+    ". . . ";
+}
