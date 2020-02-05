@@ -36,3 +36,8 @@ npm install -g webpack
 npm install
 ```
 
+Note to self:
+- currently, routes from proxy server to component servers require the following to properly render elements:
+  - make sure DBs (both mongo and MySQL) are seeded
+  - routes from component files to component server must use absolute paths (i.e., http://localhost:(component_port)/(route))
+  - component REST API must have relative routes and allow CORS (use res.set('access-control-allow-origin', '*'))

@@ -1,24 +1,53 @@
 const express = require('express');
+const axios = require('axios');
+const path = require('path');
 
 const mainApp = express();
 const mainPort = 3000;
 
-const AppPort1 = 3001;
-const AppPort2 = 3002;
-const AppPort3 = 3003;
+const filePath = path.join(__dirname, '..', 'public');
 
-mainApp.use(express.static('public'));
+mainApp.use(express.static(filePath));
+// mainApp.use(express.json());
+// mainApp.use(express.urlencoded({ extended: true }));
 
-mainApp.get('/mortgage-calculator', (req, res) => {
-
+mainApp.get('/mortgage-calculator.js', (req, res) => {
+  axios.get('http://localhost:4003/dist/bundle.js')
+    .then((bundle) => {
+      res.status(200);
+      res.send(bundle.data);
+    })
+    .catch((err) => {
+      console.log('Error fetching from mortgage calculator server');
+      res.status(500);
+      res.send(err);
+    });
 });
 
-mainApp.get('/tour-scheduler', (req, res) => {
-
+mainApp.get('/tour-scheduler.js', (req, res) => {
+  axios.get('http://localhost:3002/bundle.js')
+    .then((bundle) => {
+      res.status(200);
+      res.send(bundle.data);
+    })
+    .catch((err) => {
+      console.log('Error fetching from tour scheduler server');
+      res.status(500);
+      res.send(err);
+    });
 });
 
-mainApp.get('/listings-carousel', (req, res) => {
-
+mainApp.get('/listings-carousel.js', (req, res) => {
+  axios.get('http://localhost:4004/dist/bundle.js')
+    .then((bundle) => {
+      res.status(200);
+      res.send(bundle.data);
+    })
+    .catch((err) => {
+      console.log('Error fetching from listings carousel server');
+      res.status(500);
+      res.end(err);
+    });
 });
 
 mainApp.listen(mainPort, () => {
