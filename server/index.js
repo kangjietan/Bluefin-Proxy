@@ -6,7 +6,6 @@ const mainApp = express();
 const mainPort = 3000;
 
 const filePath = path.join(__dirname, '..', 'public');
-
 mainApp.use(express.static(filePath));
 
 mainApp.get('/mortgage-calculator.js', (req, res) => {
