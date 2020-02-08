@@ -36,7 +36,7 @@ mainApp.get('/mortgage:listingId', (req, res) => {
 });
 
 mainApp.get('/tour-scheduler.js', (req, res) => {
-  axios.get('http://52.52.152.21:3002/bundleDev.js')
+  axios.get('https://mark-bluefin-proxy.s3-us-west-1.amazonaws.com/bundle.js')
     .then((bundle) => {
       res.status(200);
       res.send(bundle.data);
