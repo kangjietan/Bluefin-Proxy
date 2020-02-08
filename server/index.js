@@ -9,7 +9,7 @@ const filePath = path.join(__dirname, '..', 'public');
 mainApp.use(express.static(filePath));
 
 mainApp.get('/mortgage-calculator.js', (req, res) => {
-  axios.get('https://bluefin-bundles.s3-us-west-1.amazonaws.com/Mortgage-Calculator/bundle.js')
+  axios.get('http://13.52.171.152:4003/dist/bundle.js')
     .then((bundle) => {
       res.status(200);
       res.send(bundle.data);
@@ -21,9 +21,9 @@ mainApp.get('/mortgage-calculator.js', (req, res) => {
     });
 });
 
-mainApp.get('/calculator:listingId', (req, res) => {
+mainApp.get('/mortgage:listingId', (req, res) => {
   const { listingId } = req.params;
-  axios.get(`http://localhost:4003/calculator${listingId}`)
+  axios.get(`http://13.52.171.152:4003/mortgage${listingId}`)
     .then((info) => {
       res.status(200);
       res.send(info.data);
@@ -36,7 +36,7 @@ mainApp.get('/calculator:listingId', (req, res) => {
 });
 
 mainApp.get('/tour-scheduler.js', (req, res) => {
-  axios.get('https://bluefin-bundles.s3-us-west-1.amazonaws.com/Tour-Scheduler/bundle.js')
+  axios.get('http://52.52.152.21:3002/bundle.js')
     .then((bundle) => {
       res.status(200);
       res.send(bundle.data);
@@ -51,7 +51,7 @@ mainApp.get('/tour-scheduler.js', (req, res) => {
 mainApp.get('/house', (req, res) => {
   const q = (req.query);
   const id = q.listingId;
-  axios.get(`http://localhost:3002/house?listingId=${id}`)
+  axios.get(`http://52.52.152.21:3002/house?listingId=${id}`)
     .then((info) => {
       res.status(200);
       res.send(info.data);
@@ -64,7 +64,7 @@ mainApp.get('/house', (req, res) => {
 });
 
 mainApp.get('/schedule', (req, res) => {
-  axios.get('http://localhost:3002/schedule')
+  axios.get('http://52.52.152.21:3002/schedule')
     .then((info) => {
       res.status(200);
       res.send(info.data);
@@ -77,7 +77,7 @@ mainApp.get('/schedule', (req, res) => {
 });
 
 mainApp.get('/listings-carousel.js', (req, res) => {
-  axios.get('https://bluefin-bundles.s3-us-west-1.amazonaws.com/Listings-Carousel/bundle.js')
+  axios.get('http://18.144.115.157:4004/dist/bundle.js')
     .then((bundle) => {
       res.status(200);
       res.send(bundle.data);
@@ -90,7 +90,7 @@ mainApp.get('/listings-carousel.js', (req, res) => {
 });
 
 mainApp.get('/similar-listings', (req, res) => {
-  axios.get('http://localhost:4004/similar-listings')
+  axios.get('http://18.144.115.157:4004/similar-listings')
     .then((info) => {
       res.status(200);
       res.send(info.data);

@@ -6,7 +6,7 @@
   grid-area: listings;
 }
 
-#app {
+#schedule {
   grid-area: schedule;
   position: sticky;
 }
