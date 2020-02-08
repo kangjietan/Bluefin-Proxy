@@ -1,5 +1,4 @@
 node_modules
 .eslintrc.js
 .nvmrc
-.package-lock.json
 .vscode
